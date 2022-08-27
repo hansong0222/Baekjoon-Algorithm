@@ -24,23 +24,13 @@ dž는 무조건 하나의 알파벳으로 쓰이고, d와 ž가 분리된 것�
 입력으로 주어진 단어가 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.
 */
 
-const readline = require("readline");
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const fs = require("fs");
+let input = fs.readFileSync("/dev/stdin").toString().trim();
+let cAlpha = ["c=","c-","dz=","d-","lj","nj","s=","z="];
 
-let input = [];
-rl.on("line", function (line) {
-  input = line;
-  rl.close();
-}).on("close", function () {
-  const changeNeed = ["c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="];
+for(let a of cAlpha){    
+    var regexAllCase = new RegExp(a, "gi")
+    input = input.replace(regexAllCase,"?");
+}
 
-  for (let element of changeNeed) {
-    input = input.split(element).join("❤");
-  }
-
-  console.log(input.length);
-  process.exit();
-});
+console.log(input.length);
