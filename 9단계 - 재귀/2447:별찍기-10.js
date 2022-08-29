@@ -28,9 +28,9 @@ function makeStar(i, j){
     }else{
         if(Math.floor(i / 3) == 0 && Math.floor(j / 3) == 0){
             txt += "*";
-          } else {
+        } else {
             makeStar(Math.floor(i / 3), Math.floor(j / 3));
-          }
+        }
     }
 }
     
